@@ -1,0 +1,26 @@
+1. **Setup:**
+   - Install necessary packages (`hmmlearn`, `python_speech_features`).
+   - Import required libraries (`os`, `numpy`, `scipy.io.wavfile`, `mfcc` from `python_speech_features`, `hmm` from `hmmlearn`, and `drive` from `google.colab`).
+   - Mount Google Drive.
+
+2. **Training:**
+   - Define a function (`HMMTrainer`) to train an HMM model with a given number of components and iterations.
+   - List all audio files in the specified data directory.
+   - Extract features (MFCC) from training audio files and store them along with their labels.
+   - Initialize an empty list to store HMM models.
+   - Iterate through unique labels in the training set:
+     - Get data for the current label.
+     - Create an instance of `HMMTrainer`.
+     - Train the HMM model with the label's data.
+     - Append the trained model and label to the list of HMM models.
+
+3. **Testing/Classification:**
+   - Define a list of test files.
+   - Iterate through the test files:
+     - Read the input audio file.
+     - Extract MFCC features from the input audio.
+     - Initialize variables to store the maximum score and the predicted label.
+     - Iterate through all trained HMM models:
+       - Score the input features using the HMM model.
+       - Update the predicted label if the current score is higher than the maximum score.
+     - Print the true and predicted labels for each test file.
